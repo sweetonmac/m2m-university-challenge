@@ -5,7 +5,7 @@
 import json
 import Queue
 import re
-import serial
+#import serial
 import subprocess
 import sys
 import threading
@@ -21,14 +21,7 @@ from cookielib import CookieJar
 
 teamname = "Team 02"  # Change displayString value to reflect your team name
 M2MserverUrl = "http://203.42.134.72/api/position"  # Target M2M server for JSON upload
-
-
-
-
-def main():
-	testpostresult = postJsonM2MServer(M2MserverUrl, -25.345, 131.035, '2014-01-01 00:00:00', 'imei', 'imsi', 'cpuID', teamname) # Test Command Only
-	print testpostresult
-	time.sleep(DELAY)
+DELAY = 5
 
 
 def postJsonM2MServer(targetUrl, latitude, longitude, timedateUTC, imei, imsi, cpuID, displayString):
@@ -51,3 +44,9 @@ def postJsonM2MServer(targetUrl, latitude, longitude, timedateUTC, imei, imsi, c
     else:
         print "[FAIL] Upload HTTP Error", UploadResult
     return UploadResult
+
+
+print "program started"
+testpostresult = postJsonM2MServer(M2MserverUrl, -25.345, 131.035, '2014-01-01 00:00:00', 'imei', 'imsi', 'cpuID', teamname) # Test Command Only
+print testpostresult
+time.sleep(DELAY)
